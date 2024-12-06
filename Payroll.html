@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Payroll System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+        }
+        input, button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #8B0000; /* Dark red */
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #600000; /* Darker red */
+        }
+        .result, .history {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .history {
+            text-align: left;
+            margin-top: 20px;
+            font-size: 16px;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+        .history-item {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Payroll System</h1>
+    <p>Assignment #4</p>
+    <div class="container">
+        <label for="name">Employee Name:</label>
+        <input type="text" id="name" placeholder="Enter employee name">
+
+        <label for="hours">Hours Worked:</label>
+        <input type="number" id="hours" placeholder="Enter hours worked">
+
+        <label for="rate">Hourly Rate:</label>
+        <input type="number" id="rate" placeholder="Enter hourly rate">
+
+        <button onclick="calculatePayroll()">Calculate Payroll</button>
+
+        <div class="result" id="result"></div>
+
+        <div class="history" id="history"></div>
+    </div>
+
+    <script>
+        const history = [];
+
+        function calculatePayroll() {
+            const name = document.getElementById("name").value;
+            const hours = parseFloat(document.getElementById("hours").value);
+            const rate = parseFloat(document.getElementById("rate").value);
+            const resultElement = document.getElementById("result");
+            const historyElement = document.getElementById("history");
+
+            if (!name || isNaN(hours) || isNaN(rate) || hours <= 0 || rate <= 0) {
+                resultElement.textContent = "Please enter valid information for all fields.";
+                return;
+            }
+
+            // Calculate Gross Salary
+            const grossSalary = hours * rate;
+
+            // Calculate Tax Deduction (e.g., 10% tax rate)
+            const taxDeduction = grossSalary * 0.10;
+
+            // Calculate Net Salary
+            const netSalary = grossSalary - taxDeduction;
+
+            // Display Results
+            resultElement.innerHTML = `
+                <p>Employee: ${name}</p>
+                <p>Gross Salary: ₱${grossSalary.toFixed(2)}</p>
+                <p>Tax Deduction (10%): ₱${taxDeduction.toFixed(2)}</p>
+                <p>Net Salary: ₱${netSalary.toFixed(2)}</p>
+            `;
+
+            // Add to history
+            history.push(`Employee: ${name} | Gross Salary: ₱${grossSalary.toFixed(2)} | Net Salary: ₱${netSalary.toFixed(2)}`);
+            renderHistory(historyElement);
+        }
+
+        function renderHistory(historyElement) {
+            historyElement.innerHTML = "<strong>Payroll History:</strong>";
+            history.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.textContent = `${index + 1}. ${item}`;
+                div.className = "history-item";
+                historyElement.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>
