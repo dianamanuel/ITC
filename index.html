@@ -7,40 +7,65 @@
     <style>
         body {
             font-family: 'Verdana', sans-serif;
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333; /* Dark text for contrast */
             text-align: center;
-            margin-top: 50px;
-            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
         }
-        h1, h2, h3 {
-            margin: 10px;
+        h1 {
+            font-size: 32px;
+            color: #8B0000; /* Dark red color */
+        }
+        h2, h3 {
+            font-size: 24px;
+            color: #333;
         }
         p {
             font-size: 18px;
+            color: #555;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
         }
         a {
-            padding: 10px 20px;
-            margin: 5px;
-            font-size: 16px;
+            padding: 12px 25px;
+            margin: 10px;
+            font-size: 18px;
             color: white;
             background-color: #8B0000; /* Dark red */
             text-decoration: none;
             border-radius: 5px;
             cursor: pointer;
+            display: inline-block;
+            transition: background-color 0.3s ease;
         }
         a:hover {
-            background-color: #600000; /* Even darker red */
+            background-color: #600000; /* Darker red */
+        }
+        a:active {
+            background-color: #a40000; /* Red when clicked */
         }
     </style>
 </head>
 <body>
+
     <h1>Introduction to Computing Project</h1>
     <h2>Diana Joliniel Manuel</h2>
-    <h3>Section: CS 1-B</h3>
+    <h3>CS 1-B 4 - 310</h3>
+    <p>Click the buttons below to access each assignment:</p>
 
-    <a href="conversion.html" target="_blank">Assignment #1 - Conversion </a>
-    <a href="incometax.html" target="_blank">Assignment #2 - Income Tax Calculator</a>
-    <a href="factorial.html" target="_blank">Assignment #3 - Factorial</a>
-    <a href="payroll.html" target="_blank">Assignment #4 - Simple Payroll</a>
+    <div class="container">
+        <a href="conversion.html" target="_blank">Assignment #1 - Conversion</a>
+        <a href="incometax.html" target="_blank">Assignment #2 - Income Tax Calculator</a>
+        <a href="factorial.html" target="_blank">Assignment #3 - Factorial</a>
+        <a href="payroll.html" target="_blank">Assignment #4 - Simple Payroll</a>
+    </div>
+
 </body>
 </html>
-
